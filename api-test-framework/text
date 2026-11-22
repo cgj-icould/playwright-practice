@@ -1,0 +1,16 @@
+api-test-framework/
+│
+├── core/                   <-- 核心层（底层工具）
+│   └── request_client.py   <-- 封装统一的请求发送（处理日志、Token、重试）
+│
+├── api/                    <-- 接口层（只管业务接口，不管测试）
+│   └── user_api.py         <-- 把具体的接口封装成方法（比如 login、get_profile）
+│
+├── tests/                  <-- 用例层（只写测试逻辑和断言）
+│   └── test_user.py        <-- 具体的测试用例
+│
+├── data/                   <-- 数据层（存放测试数据）
+│   └── login_data.yaml     <-- 账号密码等数据，实现数据驱动
+│
+├── config.py               <-- 全局配置（基础URL、环境变量）
+└── requirements.txt        <-- 依赖包清单

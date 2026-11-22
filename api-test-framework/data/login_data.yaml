@@ -1,0 +1,15 @@
+# data/login_data.yaml
+- case_name: "正常登录"
+  email: "eve.holt@reqres.in"
+  password: "pistol"
+  expected_status: 200
+
+- case_name: "缺少密码"
+  email: "eve.holt@reqres.in"
+  password: ""
+  expected_status: 400
+
+- case_name: "错误账号"
+  email: "wrong@reqres.in"
+  password: "pistol"
+  expected_status: 400
