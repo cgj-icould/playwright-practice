@@ -1,3 +1,4 @@
+
 项目架构：orangehrm-test/
 │
 ├── pages/                  <-- 页面对象
@@ -14,6 +15,15 @@
 │
 ├── playwright.config.ts
 └── package.json
-
 如何运行（npm install,npm playwright test）
 使用的技术栈（TypeScript,Playwright,POM设计模式）
+
+
+
+#我的Playwright 自动化测试练习
+这是我学习Playwright 的代码库，包含了：
+--基础网页操作与数据抓取
+--高级元素定位
+--多标签页切换
+--接口自动化测试
+
