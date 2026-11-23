@@ -1,0 +1,48 @@
+- case_name: 正向用例：正常登录
+  request_data:
+    email: test@example.com
+    password: Password123
+  expected_status: 200
+- case_name: 边界值用例：密码长度等于最小值6
+  request_data:
+    email: test@example.com
+    password: Ab1234
+  expected_status: 200
+- case_name: 边界值用例：密码长度小于最小值5
+  request_data:
+    email: test@example.com
+    password: Ab123
+  expected_status: 400
+- case_name: 等价类用例：邮箱格式非法（无@符号）
+  request_data:
+    email: testexample.com
+    password: Password123
+  expected_status: 400
+- case_name: 等价类用例：邮箱格式非法（无域名部分）
+  request_data:
+    email: test@
+    password: Password123
+  expected_status: 400
+- case_name: 等价类用例：邮箱为空字符串
+  request_data:
+    email: ''
+    password: Password123
+  expected_status: 400
+- case_name: 等价类用例：密码为空字符串
+  request_data:
+    email: test@example.com
+    password: ''
+  expected_status: 400
+- case_name: 等价类用例：缺失email字段
+  request_data:
+    password: Password123
+  expected_status: 400
+- case_name: 等价类用例：缺失password字段
+  request_data:
+    email: test@example.com
+  expected_status: 400
+- case_name: 等价类用例：账号或密码错误（已注册但凭据不匹配）
+  request_data:
+    email: valid@example.com
+    password: WrongPass123
+  expected_status: 401

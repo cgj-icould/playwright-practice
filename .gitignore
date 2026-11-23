@@ -3,3 +3,10 @@ test-results/
 playwright-report/
 playwright/.cache
 .env
+_pycache_/
+.pytest_cache/
+*.pyc
+logs/
+allure-results/
+
+

@@ -5,10 +5,10 @@ class UserApi:
     def __init__(self):
         self.client = RequestClient()
 
-    def login(self, email, password):
+    def login(self, email:str, password:str):
         # 对应 reqres 的登录接口
         payload = {"email": email, "password": password}
-        return self.client.send_request("POST", "/login", json=payload)
+        return self.client.send_request("POST", "/api/login", json=payload)
 
     def get_user(self, user_id):
         # 查询用户接口
