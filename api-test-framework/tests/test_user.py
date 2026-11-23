@@ -1,28 +1,35 @@
 import pytest
 import yaml
+import allure
 from api.user_api import UserApi
+from logger import logger
 
 user_api = UserApi()
 
-# 1. 读取 YAML 文件里的数据
-def load_login_data():
-    with open("data/login_data.yaml", "r", encoding="utf-8") as f:
-        return yaml.safe_load(f)
-
-# 2. 使用数据驱动装饰器
-@pytest.mark.parametrize("case", load_login_data())
-def test_login(case):
-    """测试登录功能（数据驱动）"""
-    print(f"\n--- 正在执行用例: {case['case_name']} ---")
+@allure.feature("用户模块")
+class TestUser:
     
-    # 调用接口，数据从 yaml 里取
-    response = user_api.login(case["email"], case["password"])
-    
-    # 断言状态码是否与 yaml 里预期的一致
-    assert response.status_code == case["expected_status"]
+    def load_login_data():
+        with open("data/login_data.yaml", "r", encoding="utf-8") as f:
+            return yaml.safe_load(f)
 
-def test_get_user_detail():
-    """正向用例：查询用户详情"""
-    response = user_api.get_user(2)
-    assert response.status_code == 200
-    assert response.json()["data"]["id"] == 2
+    @allure.story("登录接口")
+    @allure.title("测试登录场景: {case[case_name]}")
+    @pytest.mark.parametrize("case", load_login_data())
+    def test_login(self, case):
+        logger.info(f"--- 正在执行用例: {case['case_name']} ---")
+        
+        with allure.step(f"调用登录接口，账号: {case['email']}"):
+            response = user_api.login(case["email"], case["password"])
+        
+        with allure.step(f"断言状态码是否为 {case['expected_status']}"):
+            assert response.status_code == case["expected_status"]
+
+    @allure.story("查询用户")
+    @allure.title("测试查询用户详情")
+    def test_get_user_detail(self):
+        with allure.step("发送查询请求"):
+            response = user_api.get_user(2)
+        with allure.step("验证返回状态码和数据"):
+            assert response.status_code == 200
+            assert response.json()["data"]["id"] == 2
