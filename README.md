@@ -1,3 +1,6 @@
+[![UI-Tests](https://github.com/cgj-icould/playwright-practice/actions/workflows/playwright.yml/badge.svg)](https://github.com/cgj-icould/playwright-practice/actions/workflows/playwright.yml)
+[![Pytest API Tests](https://github.com/cgj-icould/playwright-practice/actions/workflows/pytest.yml/badge.svg)](https://github.com/cgj-icould/playwright-practice/actions/workflows/pytest.yml)
+
 # 自动化测试项目合集
 
 这是一个综合的自动化测试代码库，包含以下两个核心项目：
