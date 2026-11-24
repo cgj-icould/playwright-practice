@@ -27,7 +27,7 @@ def login():
         }), 200
     else:
         # 登录失败
-        return jsonify({"error": "Invalid credentials"}), 401
+        return jsonify({"error": "Invalid credentials"}), 400
 
 if __name__ == '__main__':
     # 启动服务，端口设为 5000
