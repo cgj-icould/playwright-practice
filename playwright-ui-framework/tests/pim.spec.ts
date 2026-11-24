@@ -16,8 +16,9 @@ test.describe('OrangeHRM 员工管理测试', () => {
   });
 
   test('管理员能够成功添加新员工并查看到列表', async () => {
-    const testFirstName = 'AutoTest';
-    const testLastName = 'Engineer';
+    const testFirstName = 'Auto_${Date.now()}';
+
+    const testLastName = 'Test';
     await pimPage.sideMenu.goToPIM();
 
     // 1. 执行添加动作 (这行代码掩盖了背后几十行的点击和输入)
