@@ -11,6 +11,7 @@ export class SideMenu {
   }
 
   async goToPIM() {
-    await this.pimMenu.click();
+    await this.pimMenu.waitFor({state: 'visible', timeout: 10000})
+    await this.pimMenu.click({timeout: 10000});
   }
 }
