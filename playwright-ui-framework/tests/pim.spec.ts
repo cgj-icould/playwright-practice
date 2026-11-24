@@ -30,6 +30,8 @@ test.describe('OrangeHRM 员工管理测试', () => {
     // 3. 回到列表页验证数据是否真的存在（测试数据闭环）
     await pimPage.sideMenu.goToPIM();
     const newRow = pimPage.getEmployeeRow(`${testFirstName} ${testLastName}`);
+    await page.waitForSelector('.oxd-table-loader',{state:'hidden',timeout:10000});
+
     await expect(newRow).toBeVisible();
   });
 });
