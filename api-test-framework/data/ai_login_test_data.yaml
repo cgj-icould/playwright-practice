@@ -7,7 +7,7 @@
   request_data:
     email: test@example.com
     password: Ab1234
-  expected_status: 200
+  expected_status: 400
 - case_name: 边界值用例：密码长度小于最小值5
   request_data:
     email: test@example.com
