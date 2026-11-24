@@ -13,14 +13,38 @@ jobs:
         working-directory: ./api-test-framework  # 进入你的接口文件夹
     steps:
       - uses: actions/checkout@v4
+      
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
           cache-dependency-path: './api-test-framework/requirements.txt'
+          
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install flask
+          
+      # ==========================================
+      # 新增：启动后端服务（在后台运行）
+      # ==========================================
+      - name: Start Backend Server
+        run: |
+          cd ..
+          # 假设你的启动文件叫 app.py，请确保真实存在
+          nohup python app.py > server.log 2>&1 &
+          
+          # 等待 5 秒，给服务启动的时间
+          sleep 5
+          
+          # 打印一下日志，方便如果启动失败能看到报错
+          echo "--- server.log content ---"
+          cat server.log
+          
+      # ==========================================
+      # 原有的测试步骤
+      # ==========================================
       - name: Run pytest
-        run: python -m pytest -v
+        run: |
+          python -m pytest -v
