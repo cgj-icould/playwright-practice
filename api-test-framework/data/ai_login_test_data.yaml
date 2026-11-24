@@ -1,7 +1,7 @@
 - case_name: 正向用例：正常登录
   request_data:
-    email: test@example.com
-    password: Password123
+    email: eve.holt@reqres.in
+    password: cityslicka
   expected_status: 200
 - case_name: 边界值用例：密码长度等于最小值6
   request_data:
@@ -45,4 +45,4 @@
   request_data:
     email: valid@example.com
     password: WrongPass123
-  expected_status: 401
+  expected_status: 400
