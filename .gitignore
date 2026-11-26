@@ -8,5 +8,6 @@ _pycache_/
 *.pyc
 logs/
 allure-results/
+blob-report/
 
 

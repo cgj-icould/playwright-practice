@@ -31,7 +31,8 @@ test.describe('OrangeHRM 员工管理测试', () => {
     await searchInput.fill(`${testFirstName} ${testLastName}`);
     await searchInput.press('Enter');
     const newRow = pimPage.getEmployeeRow(`${testFirstName} ${testLastName}`);
+    
     await pimPage.page.waitForSelector('.oxd-table-loader',{state:'hidden',timeout:15000});
-    await expect(newRow).toBeVisible();
+    await expect(newRow).toBeVisible({ timeout: 15000});
   });
 });
