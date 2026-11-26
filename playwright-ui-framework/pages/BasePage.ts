@@ -12,9 +12,9 @@ export class BasePage {
 
   // 比如通用的加载遮罩层等待（企业系统常见的痛点）
   async waitForLoaderToDisappear() {
-    const loader = this.page.locator('.oxd-loading-spinner');
-    if (await loader.isVisible()) {
-      await loader.waitFor({ state: 'hidden' });
-    }
+    
+    await this.page.locator('.oxd-loading-spinner').waitFor({ state: 'visible', timeout: 15000});
+     
+    
   }
 }

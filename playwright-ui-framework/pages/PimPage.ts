@@ -18,21 +18,14 @@ export class PimPage extends BasePage {
     this.employeeListTable = page.locator('.oxd-table-body');
   }
 
-  async addEmployee(firstName: string, lastName: string) {
-    await this.sideMenu.goToPIM(); // 使用组件导航
-    await this.waitForLoaderToDisappear();
+  async addEmployee(firstName:string,lastName:string) {
     await this.addEmployeeButton.click();
-    
     await this.firstNameInput.fill(firstName);
     await this.lastNameInput.fill(lastName);
-    
-    // 难点：这里的保存按钮可能需要等待 DOM 渲染
+  // 难点：这里的保存按钮可能需要等待 DOM 渲染
     await this.saveButton.click();
-    // await this.waitForLoaderToDisappear();
-    await this.page.locator('.oxd-toast--success').waitFor({state:'visible',timeout:15000});
   }
-
-  // 封装针对表格数据的断言方法（高级技巧）
+// 封装针对表格数据的断言方法（高级技巧）
   getEmployeeRow(name: string) {
     return this.employeeListTable.getByRole('row').filter({ hasText: name });
   }
