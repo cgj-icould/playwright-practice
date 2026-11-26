@@ -25,7 +25,7 @@ export default defineConfig({
     launchOptions: {
       args: [
         '--ignore-certificate-errors',
-        '--proxy-server=http://127.0.0.1:26561'
+        // '--proxy-server=http://127.0.0.1:26561'
       ]
     },
     //  
@@ -36,7 +36,7 @@ export default defineConfig({
       name: 'chromium',
       use: { 
         ...devices['Desktop Chrome'],
-        channel: 'chrome', // ✨ 关键：指定使用本地的 Chrome
+        // channel: 'chrome', // ✨ 关键：指定使用本地的 Chrome
       },
     },
   ],
