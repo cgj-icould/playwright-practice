@@ -17,7 +17,7 @@ export default defineConfig({
     // 关键1：打开 trace 全程录制，失败后能看到完整网络瀑布图
     trace: 'retain-on-failure',
     // 关键2：先关无头，肉眼观察浏览器到底卡在哪一步
-    headless: process.env.CI ? true : false,
+    headless: true,
     
     // 关键3：如果配了代理就取消注释，端口换成你自己的
     viewport: { width: 1280, height: 720 },
